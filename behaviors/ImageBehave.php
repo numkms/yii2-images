@@ -130,7 +130,7 @@ class ImageBehave extends Behavior
         $images = $this->owner->getImages();
         foreach ($images as $allImg) {
 
-            if ($allImg->getPrimaryKey() == $img->getPrimaryKey()) {
+            if ($allImg->id == $img->id) {
                 continue;
             } else {
                 $counter++;
