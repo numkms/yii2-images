@@ -17,8 +17,9 @@ use numkms\yii2images\models;
 use yii\helpers\BaseFileHelper;
 use \numkms\yii2images\ModuleTrait;
 
-class ImageBehave extends Behavior
+class ImageBehave extends UploadBehavior
 {
+
     use ModuleTrait;
     public $createAliasMethod = false;
 
