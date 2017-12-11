@@ -69,14 +69,6 @@ class UploadBehavior extends Behavior  {
 
         $dir = Yii::$app->getModule('yii2images')->imagesStorePath . '/' . md5($file->baseName.time()) . '.' . $file->extension;
         $file->saveAs($dir);
-
-        if(!($this->getImage() instanceof PlaceHolder)){
-            $filePath = Yii::$app->getModule('yii2images')->imagesStorePath . '/' .$this->getImage()->filePath;
-            $this->getImage()->delete();
-            unlink($filePath);
-
-        }
-
         $this->setMainImage($this->attachImage($dir));
 
     }
