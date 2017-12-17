@@ -67,7 +67,7 @@ class UploadBehavior extends Behavior  {
 
     private function uploadOne(UploadedFile $file){
 
-        $dir = Yii::$app->getModule('yii2images')->imagesStorePath . '/' . md5($file->baseName.time()) . '.' . $file->extension;
+        $dir = Yii::$app->getModule('content')->imagesStorePath . '/' . md5($file->baseName.time()) . '.' . $file->extension;
         $file->saveAs($dir);
         $this->setMainImage($this->attachImage($dir));
 
