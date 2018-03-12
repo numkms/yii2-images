@@ -182,7 +182,9 @@ class Image extends \yii\db\ActiveRecord
 
                 $image->writeImage($pathToSave);
             }else{
-
+                if(!is_file($imagePath)) {
+                    exit;
+                }
                 $image = new \abeautifulsite\SimpleImage($imagePath);
 
                 if($size){
