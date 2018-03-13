@@ -1,16 +1,9 @@
 yii2-images
 ===========
-Guys, we definetly need to do something with this repo. I see several ways:
-<ul>
-<li>to write tests</li>
-<li>to find active contributers</li>
-<li>to find some alternative repo</li>
-</ul>
-What do you prefer? please let me know.
-
-
 
 Yii2-images is yii2 module that allows to attach images to any of your models, next you can get images in any sizes, also you can set main image of images set.
+
+Since 2.0 you can upload your files simply with use files attributes;
 
 Module supports Imagick and GD libraries, you can set up it in module settings.
 
@@ -147,6 +140,8 @@ Installation
             return [
                 'image' => [
                     'class' => 'numkms\yii2images\behaviors\ImageBehave',
+                    'fileAttribute' => 'mainimage',
+                    'filesAttribute' => 'gallery',
                 ]
             ];
         }

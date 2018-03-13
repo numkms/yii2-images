@@ -1,14 +1,14 @@
 <?php
+
 namespace numkms\yii2images\behaviors;
-use common\modules\event\models\Event;
-use numkms\yii2images\behaviors\ImageBehave;
+
 use rico\yii2images\models\PlaceHolder;
-use Yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use yii\db\BaseActiveRecord;
 use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
+use Yii;
 
 class UploadBehavior extends Behavior  {
 
@@ -73,8 +73,9 @@ class UploadBehavior extends Behavior  {
         if(!($this->getImage() instanceof PlaceHolder)){
             $filePath = Yii::$app->getModule('yii2images')->imagesStorePath . '/' .$this->getImage()->filePath;
             $this->getImage()->delete();
-            unlink($filePath);
-
+            if (file_exists($filePath)) {
+            	unlink($filePath);
+            }
         }
 
         $this->setMainImage($this->attachImage($dir));
