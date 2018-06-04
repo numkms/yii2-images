@@ -52,8 +52,12 @@ class ImagesController extends Controller
         }
 
         if($image){
-            header('Content-Type: ' . $image->getMimeType($size) );
-            return $image->getContent($size);
+            $response = Yii::$app->response;
+            $response->format = yii\web\Response::FORMAT_RAW;
+            $contentType = $image->getMimeType($size);
+            $response->headers->add('Content-Type', $contentType);
+            $response->data = $image->getContent($size);
+            $response->send();
         }else{
             throw new \yii\web\HttpException(404, 'There is no images');
         }
